@@ -1,6 +1,7 @@
 const authRouter= require('../api/server');
 const request=require('supertest');
 const usersModel= require('../users/users-model');
+const usersRouter= require('../users/users-router');
 const db= require('../database/dbConfig');
 
 beforeEach(async () => {
@@ -50,13 +51,13 @@ describe('login endpoint', () => {
         })
         
         //test 2
-        // it('should return welcome user message', async () => {
-        //    return request(authRouter)
-        //    .get('/api/auth/login')
-        //    .then(res => {
-        //        expect(res.body).toEqual(status(200).json.message)   //.json.message = any?
-        //    })
-
-        // })
+        it('should return list of users', async () => {
+            const users= await db('users') 
+            return request(usersRouter)
+            .get('/api/users')
+            .then(res => {
+                expect(res.body).toEqual(users)
+            })
+        })
     })
     })
