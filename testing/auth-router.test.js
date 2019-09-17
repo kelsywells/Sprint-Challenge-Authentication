@@ -41,24 +41,22 @@ describe('login endpoint', () => {
         it('should return successful post response', async () => {
             const expectedStatusCode= 200;
             
-            await request(authRouter).post('/api/auth/register').send({username: "gourd", password: "halloween1"});
-            const response= await request(authRouter).post('/api/auth/login').send({ username: "gourd", password: "halloween1" });
+            await request(authRouter).post('/api/auth/register').send({username: "gourd1", password: "halloween1"});
+            const response= await request(authRouter).post('/api/auth/login').send({ username: "gourd1", password: "halloween1" });
 
             expect(response.status).toEqual(expectedStatusCode);
 
-            console.log(response);
 
         })
         
-    //     //test 2
-    //     it('should return welcome page', async () => {
-    //        return request(authRouter)
-    //        .get('/')
-    //        .then(res => {
-    //            expect(res.type).toBe('application/json');
-    //            expect(res.body).toEqual(status(200).json.message) //this feels wrong
-    //        })
+        //test 2
+        // it('should return welcome user message', async () => {
+        //    return request(authRouter)
+        //    .get('/api/auth/login')
+        //    .then(res => {
+        //        expect(res.body).toEqual(status(200).json.message)   //.json.message = any?
+        //    })
 
-    //     })
+        // })
     })
     })
